@@ -1,38 +1,100 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#content {
+  border: 1px solid #707070;
+  width: 784px;
+  height: 412px;
+  margin: calc(50vh - 412px / 2) auto;
+  display: grid;
+  grid-template-columns: 260px 262px 260px;
+}
+
+#range-filters {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-column-start: 1;
+}
+
+#range {
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  grid-template-rows: auto 1fr 1fr;
+  margin: 0 0 3px 5px;
+}
+
+#range label {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 2;
+}
+
+#fromValue {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+}
+
+#toValue {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+}
+
+#range-value {
+  grid-row: 2 / span 2;
+  grid-column: 2 / span 1;
+  vertical-align: middle;
   text-align: center;
+  line-height: 40px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#filters {
+  display: grid;
+  grid-template-columns: 87px 86px 87px;
+  grid-row: 2 / span 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#size-filter, #total-filter, #digits-filter {
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#size-filter-list, #total-filter-list, #digits-filter-list {
+  grid-row: 2 / span 1;
 }
 
-.App-link {
-  color: #61dafb;
+#size-filter-list {
+  border-width: 1px 1px 0 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#total-filter-list {
+  border-width: 1px 0 0 0;
+}
+
+#digits-filter-list {
+  border-width: 1px 0 0 1px;
+}
+
+#matches {
+  grid-column-start: 2;
+}
+
+#used-unavailable {
+  grid-column-start: 3;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.header label {
+  line-height: 26px;
+  vertical-align: middle;
+  padding: 0 5px;
+}
+
+.header .button {
+  margin: 3px;
 }

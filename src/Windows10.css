@@ -1,0 +1,52 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 9pt;
+    cursor: default;
+    user-select: none;
+}
+
+.button {
+    border: 1px solid #707070;
+    background-color: #DDDDDD;
+    text-align: center;
+    vertical-align: center;
+    line-height: 18px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+.button:hover, .button:active {
+    border-color: #3C7FB1;
+    background-color: #BEE6FD;
+}
+
+.button:active:hover {
+    border-color: #245A83;
+    background-color: #C4E5F6;
+}
+
+.listbox {
+    border: 1px solid #707070;
+    padding: 1px;
+}
+
+.listbox .item {
+    border: 1px solid transparent;
+    height: 20px;
+    padding: 4px 0;
+    line-height: 18px;
+    vertical-align: middle;
+}
+
+.listbox .item:hover {
+    border-color: #70C0E7;
+    background-color: #E5F3FB;
+    height: 20px;
+}
+
+.listbox .item.selected {
+    border-color: #26A0DA;
+    background-color: #CBE8F6;
+    height: 20px;
+}
