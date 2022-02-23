@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LWChris Sudoku Combination Filter</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <noscript>You must enable JavaScript for this tool to work.</noscript>
+        <div id="content">
+            <div id="range-filters">
+                <div id="range">
+                    <label>Range</label>
+                    <input type="range" id="fromValue" min="0" max="9" value="1">
+                    <input type="range" id="toValue" min="0" max="9" value="9">
+                    <div id="range-value">1 - 9</div>
+                </div>
+                <div id="filters">
+                    <div id="size-filter">
+                        <div class="header">
+                            <label>Size</label>
+                            <div id="clear-size-filter" class="button">x</div>
+                        </div>
+                        <select multiple="true" id="size-filter-list">
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>
+                    </div>
+                    <div id="total-filter">
+                        <div class="header">
+                            <label>Total</label>
+                            <div id="clear-total-filter" class="button">x</div>
+                        </div>
+                        <select multiple="true" id="total-filter-list">
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                            <option>19</option>
+                            <option>20</option>
+                            <option>21</option>
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                            <option>27</option>
+                            <option>28</option>
+                            <option>29</option>
+                            <option>30</option>
+                            <option>31</option>
+                            <option>32</option>
+                            <option>33</option>
+                            <option>34</option>
+                            <option>35</option>
+                            <option>36</option>
+                            <option>37</option>
+                            <option>38</option>
+                            <option>39</option>
+                            <option>40</option>
+                            <option>41</option>
+                            <option>42</option>
+                            <option>43</option>
+                            <option>44</option>
+                            <option>45</option>
+                        </select>
+                    </div>
+                    <div id="digits-filter">
+                        <div class="header">
+                            <label>Digits</label>
+                            <div id="invert-digits-filter" class="toggle-button">!</div>
+                            <div id="clear-digits-filter" class="button">x</div>
+                        </div>
+                        <select multiple="true" id="digits-filter-list">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="matches">
+
+            </div>
+            <div id="used-unavailable">
+
+            </div>
+        </div>
+    </body>
+</html>
