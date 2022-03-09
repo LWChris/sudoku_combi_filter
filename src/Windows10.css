@@ -34,9 +34,8 @@
 .listbox .item {
     border: 1px solid transparent;
     height: 20px;
-    padding: 4px 0;
+    padding: 0 4px;
     line-height: 18px;
-    vertical-align: middle;
 }
 
 .listbox .item:hover {

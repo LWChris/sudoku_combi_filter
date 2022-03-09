@@ -1,7 +1,7 @@
-import React from 'react';
-import { DigitsFilter } from './DigitsFilter';
-import { SizeFilter } from './SizeFilter';
-import { TotalFilter } from './TotalFilter';
+import React from 'react'
+import { DigitsFilter } from './DigitsFilter'
+import { SizeFilter } from './SizeFilter'
+import { TotalFilter } from './TotalFilter'
 
 export class Filters extends React.Component {
   render() {
@@ -11,6 +11,6 @@ export class Filters extends React.Component {
         <TotalFilter />
         <DigitsFilter />
       </div>
-    );
+    )
   }
 }

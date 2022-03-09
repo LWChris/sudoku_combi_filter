@@ -1,9 +1,9 @@
-import React from 'react';
-import './App.css';
-import './Windows10.css';
-import { Matches } from './Matches';
-import { RangeFilters } from './RangeFilters';
-import { UsedUnavailable } from './UsedUnavailable';
+import React from 'react'
+import './App.css'
+import './Windows10.css'
+import { Matches } from './Matches'
+import { RangeFilters } from './RangeFilters'
+import { UsedUnavailable } from './UsedUnavailable'
 
 class App extends React.Component {
   constructor(props) {
@@ -17,12 +17,12 @@ class App extends React.Component {
   }
 
   fromValueChanged(newFromValue) {
-    let newValue = parseInt(newFromValue);
+    let newValue = parseInt(newFromValue)
     if (isNaN(newValue)) {
-      return;
+      return
     }
     if (newValue > this.state.toValue) {
-      newValue = this.state.toValue;
+      newValue = this.state.toValue
     }
     this.setState({
       fromValue: newValue
@@ -30,12 +30,12 @@ class App extends React.Component {
   }
 
   toValueChanged(newToValue) {
-    let newValue = parseInt(newToValue);
+    let newValue = parseInt(newToValue)
     if (isNaN(newValue)) {
-      return;
+      return
     }
     if (newValue < this.state.fromValue) {
-      newValue = this.state.fromValue;
+      newValue = this.state.fromValue
     }
     this.setState({
       toValue: parseInt(newValue)
@@ -43,8 +43,8 @@ class App extends React.Component {
   }
 
   render() {
-    const fromValue = this.state.fromValue;
-    const toValue = this.state.toValue;
+    const fromValue = this.state.fromValue
+    const toValue = this.state.toValue
 
     return (
       <div id="content">
@@ -56,8 +56,8 @@ class App extends React.Component {
         <Matches />
         <UsedUnavailable />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
