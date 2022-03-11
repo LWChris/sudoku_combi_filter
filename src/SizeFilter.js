@@ -35,7 +35,7 @@ export class SizeFilter extends React.Component {
         <FilterHeader header="Size" onClearClicked={this.clear} />
         <ListBox
           id="size-filter-list"
-          selectionMode="multiple"
+          selectionMode="extended"
           items={items}
           selectedItems={selectedItems}
           selectionChanged={this.selectionChanged} />

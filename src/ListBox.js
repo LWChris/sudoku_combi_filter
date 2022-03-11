@@ -4,12 +4,9 @@ import { ListItem } from './ListItem'
 export class ListBox extends React.Component {
   constructor(props) {
     super(props)
-
-    const preSelection = props.selectedItems || []
     
     this.state = {
-      lastIndex: 0,
-      selection: props.items.map(item => preSelection.indexOf(item.id) > -1)
+      lastIndex: 0
     }
 
     this.itemClicked = this.itemClicked.bind(this)
@@ -21,84 +18,82 @@ export class ListBox extends React.Component {
   }
 
   itemClicked(e, index) {
-    this.setState((state, props) => {
-      switch (props.selectionMode) {
-        case "multiple": {
-          return this.toggleSelection(state.selection, index)
-        }
-        case "extended": {
-          if (e.ctrlKey && e.shiftKey) {
-            return this.extendSelection(state.selection, state.lastIndex, index)
-          } else if (e.ctrlKey && !e.shiftKey) {
-            return this.toggleSelection(state.selection, index)
-          } else if (!e.ctrlKey && e.shiftKey) {
-            return this.changeSelection(state.selection, state.lastIndex, index)
-          } else {
-            return this.setSelection(state.selection, index, true)
-          }
-        }
-        default: {
-          if (e.ctrlKey) {
-            return this.setSelection(state.selection, index, !state.selection[index])
-          } else {
-            return this.setSelection(state.selection, index, true)
-          }
-        }
+    const selectedItems = this.props.selectedItems || []
+    const selectedIndex = this.props.items.map(item => selectedItems.indexOf(item.id) > -1)
+    let newSelectedIndex
+
+    switch (this.props.selectionMode) {
+      case "multiple": {
+        newSelectedIndex = this.toggleSelection(selectedIndex, index)
+        break
       }
-    },
-    () => {
-      if (this.props.selectionChanged) {
-        const newSelection = this.props.items
-          .filter((_, index) => this.state.selection[index])
+      case "extended": {
+        if (e.ctrlKey && e.shiftKey) {
+          newSelectedIndex = this.extendSelection(selectedIndex, this.state.lastIndex, index)
+        } else if (e.ctrlKey && !e.shiftKey) {
+          newSelectedIndex = this.toggleSelection(selectedIndex, index)
+        } else if (!e.ctrlKey && e.shiftKey) {
+          newSelectedIndex = this.changeSelection(selectedIndex, this.state.lastIndex, index)
+        } else {
+          newSelectedIndex = this.setSelection(selectedIndex, index, true)
+        }
+        break
+      }
+      default: {
+        if (e.ctrlKey) {
+          newSelectedIndex = this.setSelection(selectedIndex, index, !selectedIndex[index])
+        } else {
+          newSelectedIndex = this.setSelection(selectedIndex, index, true)
+        }
+        break
+      }
+    }
+      
+    if (this.props.selectionChanged) {
+        const newSelectedItems = this.props.items
+          .filter((_, index) => newSelectedIndex[index])
           .map(item => item.id)
-        this.props.selectionChanged(newSelection)
+        this.props.selectionChanged(newSelectedItems)
       }
-    })
   }
 
   changeSelection(selection, lastIndex, index) {
     const low = index < lastIndex ? index : lastIndex
     const high = index > lastIndex ? index : lastIndex
-    let newSelection = selection.map((_, i) => low <= i && i <= high)
-    return {
-      selection: newSelection
-    }
+    return selection.map((_, i) => low <= i && i <= high)
   }
 
   extendSelection(selection, lastIndex, index) {
     const low = index < lastIndex ? index : lastIndex
     const high = index > lastIndex ? index : lastIndex
-    let newSelection = selection.map((old, i) => old || (low <= i && i <= high))
-    return {
-      selection: newSelection
-    }
+    return selection.map((old, i) => old || (low <= i && i <= high))
   }
 
   setSelection(selection, index, value) {
     let newSelection = selection.map(_ => false)
     newSelection[index] = value
-    return {
-      lastIndex: index,
-      selection: newSelection
-    }
+    this.setState({
+      lastIndex: index
+    });
+    return newSelection
   }
 
   toggleSelection(selection, index) {
     let newSelection = selection.filter(() => true)
     newSelection[index] = !newSelection[index]
-    return {
-      selection: newSelection
-    }
+    return newSelection
   }
 
   render() {
+    const selectedItems = this.props.selectedItems || []
+    const selectedIndex = this.props.items.map(item => selectedItems.indexOf(item.id) > -1)
     const items = this.props.items.map(
       (item, index) => <ListItem 
         key={item.id.toString()}
         id={index}
         value={item.value}
         clicked={this.itemClicked}
-        isSelected={this.state.selection[index]} />
+        isSelected={selectedIndex[index]} />
     )
     return (
       <div className="listbox" id={this.props.id}>
